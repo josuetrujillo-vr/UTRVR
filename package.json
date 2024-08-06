@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "aframe-supercraft-loader": "^3.0.0",
+    "aframe-watcher": "^1.4.0"
+  }
+}

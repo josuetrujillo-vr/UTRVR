@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>JOSUE SHOOTER</title>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-super-shooter-kit@1.0.1/dist/aframe-super-shooter-kit.min.js"></script>
+  <script src="https://unpkg.com/aframe-supercraft-loader@3.0.0/dist/aframe-supercraft-loader.min.js"></script>
+  <script src="https://unpkg.com/aframe-supercraft-thing@1.1.0/dist/aframe-supercraft-thing.min.js"></script>
+  <script src="components/enemy.js"></script>
+  <script>
+    AFRAME.registerComponent('click-to-shoot', {
+      init: function () {
+        document.body.addEventListener('mousedown', () => { this.el.emit('shoot'); });
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <a-scene>
+  <a-entity supercraft-loader="name: wealthy-dock"></a-entity>
+    <a-entity supercraft-visualizer="name: icky-snake"></a-entity>
+
+    <a-assets>
+      <a-asset-item id="soundSong" src="sounds/monogatari.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundEnemy1a" src="sounds/d4c_valentine.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundEnemy1b" src="sounds/yadayada.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundEnemy1c" src="sounds/diojotaro.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundEnemy2" src="sounds/baka.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundEnemy3" src="sounds/BakaBakaBaka.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundExplosion" src="sounds/explosiooon.mp3" response-type="arraybuffer"></a-asset-item>
+      <a-asset-item id="soundShoot" src="sounds/araara.mp3" response-type="arraybuffer"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="music" sound="src: #soundSong; loop: true; on: playmusic"></a-entity>
+    <a-entity id="commonExplosion" sound="src: #soundExplosion; poolSize: 5" position="0 6.04867 0"></a-entity>
+    <a-entity id="supercraftThings" supercraft-loader="name: probable-representative; includeEnvironment: false" visible="false"></a-entity>
+
+
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing0; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing1; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing3; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing4; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing5; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing6; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing7; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing8; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing10; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing11; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing12; resetOrigin: false"></a-entity>
+    <a-entity supercraft-thing="from: #supercraftThings; name: thing13; resetOrigin: false"></a-entity>
+
+
+    <a-entity id="enemy14" position="2.7584777287523146 0.1924296054603285 1.179223415667676"
+      supercraft-thing="from: #supercraftThings; name: thing14" class="enemy" enemy="type:1" target="static: false">
+      <a-entity sound="src: #soundEnemy1a; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy15" position="7.11532 2.32945 9.15338"
+      supercraft-thing="from: #supercraftThings; name: thing15" class="enemy" enemy="type:2" target="static: false">
+      <a-entity sound="src: #soundEnemy2; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy16" position="3.89281 7.19261 -2.44203" supercraft-thing="from: #supercraftThings; name: thing16"
+      class="enemy" enemy="type:3" target="static: false">
+      <a-entity sound="src: #soundEnemy3; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy18" position="6.5637 0.22802 6.19662" supercraft-thing="from: #supercraftThings; name: thing18"
+      class="enemy" enemy="type:1" target="static: false">
+      <a-entity sound="src: #soundEnemy1b; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy19" position="-4.26628 2.03192 -15.98971"
+      supercraft-thing="from: #supercraftThings; name: thing19" class="enemy" enemy="type:1" target="static: false">
+      <a-entity sound="src: #soundEnemy1c; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy20" position="11.32843 1.28454 -16.02865"
+      supercraft-thing="from: #supercraftThings; name: thing20" class="enemy" enemy="type:1" target="static: false">
+      <a-entity sound="src: #soundEnemy1a; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy21" position="-5.12018 3.50347 3.7479"
+      supercraft-thing="from: #supercraftThings; name: thing21" class="enemy" enemy="type:2" target="static: false">
+      <a-entity sound="src: #soundEnemy3; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy22" position="-16.03162 2.16598 -8.20806"
+      supercraft-thing="from: #supercraftThings; name: thing22" class="enemy" enemy="type: 3"
+      target="static: false; healthPoints: 10">
+      <a-entity sound="src: #soundEnemy2; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy23" position="3.88614 2.68141 -5.17399" supercraft-thing="from: #supercraftThings; name: thing23"
+      class="enemy" enemy="type:2" target="static: false">
+      <a-entity sound="src: #soundEnemy1b; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy24" supercraft-thing="from: #supercraftThings; name: thing24" class="enemy" enemy="type:3"
+      target="static: false">
+      <a-entity sound="src: #soundEnemy3; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy25" position="-10.983193729092946 7.2458771080385524 -1.8538323761701776"
+      supercraft-thing="from: #supercraftThings; name: thing25" class="enemy" enemy="type:3" target="static: false">
+      <a-entity sound="src: #soundEnemy1b; poolSize: 1"></a-entity>
+    </a-entity>
+    <a-entity id="enemy27" supercraft-thing="from: #supercraftThings; name: thing27" class="enemy" enemy="type:3"
+      target="static: false">
+      <a-entity sound="src: #soundEnemy3; poolSize: 1"></a-entity>
+    </a-entity>
+
+  
+    <a-entity id="enemy14expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy15expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy16expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy18expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy19expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy20expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy21expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy22expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy23expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy24expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy25expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+    <a-entity id="enemy27expl"
+      supercraft-thing="from: #supercraftThings; name: thing31; resetOrigin: true; ignorePosition: true"></a-entity>
+
+  
+    <a-entity bullet="name: normal; speed: 30.0; poolSize: 20" geometry="primitive: icosahedron; radius: 0.1;"
+      material="color: #FF7; emissiveIntensity: 0.5; emissive: #FF7"></a-entity>
+
+    <a-entity id="startMessage" scale="1.5 1.5 1.5" position="2.80688 4.57093 -0.24498" supercraft-thing="from: #supercraftThings; name: thing28" material="color: red" target
+      proxy-event__startenemies="event: die; to: .enemy; as: run"
+      proxy-event__playmusic="event: die; to: #music; as: playmusic">
+    </a-entity>
+
+
+    <a-entity id="rightGun" vive-controls="hand: right; model: false;"
+      oculus-touch-controls="hand: right; model: false;" daydream-controls="hand: right; model: false"
+      proxy-event__daydream="event: trackpaddown; to: #rightGun; as: triggerdown"
+      proxy-event__shoot="event: triggerdown; to: #rightGun; as: shoot"
+      proxy-event__shootsound="event: triggerdown; to: #soundShootRight; as: shoot"
+      shooter="bulletTypes: normal; activeBulletType: normal">
+      <a-entity supercraft-thing="from: #supercraftThings; name: thing30; resetOrigin: true; ignorePosition: true"
+        rotation="0 5 0" position="0 0 -0.03"></a-entity>
+      <a-entity id="soundShootRight" sound="src: #soundShoot; poolSize: 10; on: shoot; volume: 0.6"></a-entity>
+    </a-entity>
+
+    <a-entity id="leftGun" vive-controls="hand: left; model: false" oculus-touch-controls="hand: left; model: false"
+      daydream-controls="hand: left; model: false"
+      proxy-event__daydream="event: trackpaddown; to: #leftGun; as: triggerdown"
+      proxy-event__shoot="event: triggerdown; to: #leftGun; as: shoot"
+      proxy-event__shootsound="event: triggerdown; to: #soundShootLeft; as: shoot"
+      shooter="bullets: normal; activeBulletType: normal">
+      <a-entity supercraft-thing="from: #supercraftThings; name: thing30; resetOrigin: true; ignorePosition: true"
+        rotation="0 5 0" position="0 0 -0.03"></a-entity>
+      <a-entity id="soundShootLeft" sound="src: #soundShoot; poolSize: 10; on: shoot; volume: 0.6"></a-entity>
+    </a-entity>
+
+    <a-camera shooter="bullets: normal; activeBulletType: normal" click-to-shoot></a-camera>
+  </a-scene>
+</body>
